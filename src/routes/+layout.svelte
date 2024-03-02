@@ -63,7 +63,7 @@
 		}
 	});
 
-	$: development_time = minute(2);
+	$: development_time = minute(5);
 	$: estimated_end_time = calcEstTime(development_time, getStep($page.url.pathname));
 	
 </script>
@@ -89,10 +89,7 @@
 			<a href="/fix">fix</a>
 			<a href="/wash">wash</a>
 			<a href="/dry">dry</a>
-
 		</div>
-	
-
 
 		<slot />
 	</main>

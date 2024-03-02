@@ -15,6 +15,6 @@ export function minute(n : number) : number {
  * @param n time, in seconds
  * @returns time, in seconds
  */
-export function seconds(n : number) : number {
+export function second(n : number) : number {
     return n;
 }

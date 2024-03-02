@@ -44,12 +44,14 @@
     let timerInterval:NodeJS.Timeout;
 
     function timerTick() {
-        console.log("tick");
         // update components relating to end time
         remaining_time = ((start_time + (duration * 1000)) - Date.now()) / 1000;
 
         if (!start_time || Date.now() > start_time + (duration * 1000)) {
-            console.log(`clearing ${duration} has passed)`);
+            console.log(`clearing ${duration} has passed`);
+
+            remaining_time = 0;
+            $started = false;
             clearInterval(timerInterval);
         }
     }
@@ -70,8 +72,8 @@
         clearInterval(timerInterval);
     }
 
-    // TODO: dispatch("timer_complete")
-    // TODO: dispatch("subtimer_complete")
+    // TODO: dispatch("timer_complete")?
+    // TODO: dispatch("subtimer_complete")?
 
 </script>
 
@@ -107,7 +109,7 @@
     {/if}
 
     {#if !$started}
-        {#if start_time && remaining_time < 0}
+        {#if start_time && remaining_time <= 0}
             {#if next_url}
                 <a href={next_url}>next</a>
             {:else}
@@ -120,7 +122,7 @@
         <!-- 
             Q: "why is pause/continuing not a feature?" 
             A: because you can't pause the chemicals of a film process.
-             the only reason why you would pause is if you accidently started ur timer.
+             the only reason why you would pause is if you accidently started ur timer and want a reset.
         -->
         <button on:click={cancelTimer}>cancel</button>
     {/if}

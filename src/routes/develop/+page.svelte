@@ -3,7 +3,7 @@
     
     // export let data: PageData;
 
-	import {minute, seconds} from "$lib/util"
+	import {minute, second} from "$lib/util"
 	import Timer from '$lib/components/Timer.svelte';
 
 
@@ -35,10 +35,12 @@
 <section>
     <div>
 		{#if manual_timer_input} 
-			<input min="0" max="60" type="number" on:change={event => { console.log(event)}}>
-			<input min="0" max="60" type="number" on:change={event => {}}>
+			<input min="0" max="60" type="number" on:input={event => { console.log(event)}}>
+			<input min="0" max="60" type="number" on:input={event => {}}>
 		{:else}
 			<!-- realistically min should be not 0 cuz why are you processing film at 0 degrees f -->
+			<!-- TODO: celsius? -->
+			<p>Kentmere 100:</p>
 			<input 
 				min="0" 
 				max="88" 
@@ -52,16 +54,14 @@
         <Timer 
             duration={development_time} 
             sub_timer
-			sub_timer_duration={seconds(30)}
+			sub_timer_duration={second(30)}
             next_url="/rinse"
         >
 			<div slot="subtimer" let:timer_count>
-				{timer_count}
 				{#if timer_count < 1} 
-					<p><b>REMINDER: TAP THE BOTTOM OF THE SINK</b></p>
+					<p><b>REMINDER: TAP THE BOTTOM OF THE SINK WHEN THIS SUB-TIMER ENDS</b></p>
 				{/if}
 			</div>
-
 		</Timer>
         
         <div class="text-column">
