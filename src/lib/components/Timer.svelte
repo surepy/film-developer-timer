@@ -37,7 +37,8 @@
     $: remaining_seconds = Math.trunc(remaining_time % 60).toString().padStart(2, "0");
 
     // subtimer
-    $: sub_remaining_time = remaining_time % sub_timer_duration;
+    $: sub_elapsed_time = elapsed_time % sub_timer_duration;
+    $: sub_remaining_time = sub_timer_duration - sub_elapsed_time;
     $: sub_remaining_seconds = Math.trunc(sub_remaining_time % 60).toString().padStart(2, "0");
 
     let timerInterval:NodeJS.Timeout;
