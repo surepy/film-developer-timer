@@ -3,8 +3,9 @@
 	import './styles.css';
 	import {minute} from "$lib/util"
 	import { page } from '$app/stores';  
-
-
+	import { beforeNavigate } from '$app/navigation';
+	import { started as timer_started } from '$lib/components/Timer.svelte';
+ 
 	enum DevelopmentSteps {
 		Develop,
 		Rinse,
@@ -54,6 +55,13 @@
 		}
 		return est_time;
 	}
+
+	beforeNavigate(nav => {
+		if ($timer_started) {
+			console.log("there is an ongoing timer, cancelling nav");
+			nav.cancel();
+		}
+	});
 
 	$: development_time = minute(2);
 	$: estimated_end_time = calcEstTime(development_time, getStep($page.url.pathname));
