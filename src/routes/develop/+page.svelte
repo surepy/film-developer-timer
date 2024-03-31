@@ -3,7 +3,7 @@
     
     // export let data: PageData;
 
-	import {minute, second} from "$lib/util"
+	import {minute, second, integer} from "$lib/util"
 	import Timer from '$lib/components/Timer.svelte';
 
 
@@ -18,6 +18,8 @@
 		// https://www.ilfordphoto.com/amfile/file/download/file/1958/product/2131/ - page 3.
 		return -0.25 * temperature + 22;
 	}
+
+	// TODO: grab some data off https://www.digitaltruth.com/ ?
 
 	let manual_timer_input = false;
 
@@ -34,9 +36,14 @@
 
 <section>
     <div>
+		<input type="checkbox" bind:checked={manual_timer_input}> <label for="vehicle2">Manual Mode</label>
+		<br>
+
 		{#if manual_timer_input} 
-			<input min="0" max="60" type="number" on:input={event => { console.log(event)}}>
-			<input min="0" max="60" type="number" on:input={event => {}}>
+			Minutes:
+			<input min="0" max="60" type="number" inputmode="numeric" pattern="[0-9]*" bind:value={dev_minutes} >
+			Seconds:
+			<input min="0" max="60" type="number" inputmode="numeric" pattern="[0-9]*" bind:value={dev_seconds} >
 		{:else}
 			<!-- realistically min should be not 0 cuz why are you processing film at 0 degrees f -->
 			<!-- TODO: celsius? -->
@@ -47,16 +54,32 @@
 				placeholder="developer tempreture" 
 				type="number" 
 				value=68
-				on:input={event => { dev_minutes = kentmere_100_kodak_hc110_dev_time(event.target?.value); }}
+				on:input={
+					event => { 
+						dev_seconds = 0; 
+						dev_minutes = kentmere_100_kodak_hc110_dev_time(event.target?.value); 
+					}
+				}
 			> 'F
 		{/if}
+		<br>
+		<br>
 
         <Timer 
             duration={development_time} 
             sub_timer
 			sub_timer_duration={second(30)}
             next_url="/rinse"
+			let:remaining_time
         >
+			<div >
+				{#if remaining_time < 10}
+					<p><b>START POURING NOW</b></p>
+				{:else if remaining_time < 30} 
+					<p><b>Start pouring in {integer(remaining_time - 10)} seconds to prevent overdevelopent!</b></p>
+				{/if}
+			</div>
+
 			<div slot="subtimer" let:timer_count>
 				{#if timer_count < 1} 
 					<p><b>REMINDER: TAP THE BOTTOM OF THE SINK WHEN THIS SUB-TIMER ENDS</b></p>

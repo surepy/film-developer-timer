@@ -1,6 +1,8 @@
-# create-svelte
+# Basic Film Development Timer
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+A basic film development timer, created so I don't have to circulate between multiple timers on my phone.
+
+Currently supported: kentmere 100 + kodak hc110
 
 ## Creating a project
 

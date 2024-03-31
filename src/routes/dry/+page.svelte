@@ -16,7 +16,7 @@
 		</Timer>
         
         <div class="text-column">
-            asdf
+            Tip: take a coffee break! 
         </div>
     </div>
 </section>

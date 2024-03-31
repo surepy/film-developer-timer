@@ -13,7 +13,7 @@
 <section>
     <div>
         <Timer 
-            duration={second(30)} 
+            duration={second(60)} 
             sub_timer
 			sub_timer_duration={second(10)}
             next_url="/fix"
@@ -21,7 +21,8 @@
 		</Timer>
         
         <div class="text-column">
-            asdf
+            Note: this timer doesn't really matter, just fill up and dump your container
+            three times with water.
         </div>
     </div>
 </section>

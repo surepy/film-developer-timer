@@ -5,6 +5,7 @@
 	import { page } from '$app/stores';  
 	import { beforeNavigate } from '$app/navigation';
 	import { started as timer_started } from '$lib/components/Timer.svelte';
+	import { onMount } from 'svelte';
  
 	enum DevelopmentSteps {
 		Develop,
@@ -58,10 +59,13 @@
 
 	beforeNavigate(nav => {
 		if ($timer_started) {
-			console.log("there is an ongoing timer, cancelling nav");
+			console.log(`there is an ongoing timer, cancelling nav (${nav.from?.url} => ${nav.to?.url})`);
 			nav.cancel();
+			return;
 		}
 	});
+
+	onMount(() => {});
 
 	$: development_time = minute(5);
 	$: estimated_end_time = calcEstTime(development_time, getStep($page.url.pathname));
@@ -95,7 +99,7 @@
 	</main>
 
 	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+		<p>made with <a href="https://kit.svelte.dev">SvelteKit</a></p>
 	</footer>
 </div>
 

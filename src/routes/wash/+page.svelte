@@ -14,7 +14,7 @@
 <section>
     <div>
         <Timer 
-            duration={minute(10)} 
+            duration={minute(20)} 
             next_url="/dry"
         >
 		</Timer>
