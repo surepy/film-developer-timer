@@ -114,7 +114,7 @@
             console.log("previous state detected, restoring...")
 
             // navigate to our previous route, and await for it.
-            await goto(`${base}${timerGetLastRoute()}`);
+            await goto(timerGetLastRoute());
 
             // make sure this component updates or whatever
             await tick();
