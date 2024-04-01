@@ -10,6 +10,7 @@
 	import { timerClearActive, timerGetLastEndTime, timerGetLastRoute, timerSetActive, timerWasActive, wakelocks } from '$lib/util';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
+    import { base } from '$app/paths';
 
     const dispatch = createEventDispatcher();
 
@@ -113,7 +114,7 @@
             console.log("previous state detected, restoring...")
 
             // navigate to our previous route, and await for it.
-            await goto(timerGetLastRoute());
+            await goto(`${base}${timerGetLastRoute()}`);
 
             // make sure this component updates or whatever
             await tick();
@@ -176,7 +177,7 @@
     {#if !$started}
         {#if start_time && remaining_time <= 0}
             {#if next_url}
-                <a href={next_url}>next</a>
+                <a href={`${base}${next_url}`}>next</a>
             {:else}
                 <button on:click={() => { start_time = Date.now().valueOf(); startTimer(); }}>start</button>
             {/if}

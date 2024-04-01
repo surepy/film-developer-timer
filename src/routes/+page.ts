@@ -1,10 +1,7 @@
-// since there's no dynamic data here, we can prerender
-// it so that it gets served as a static asset in production
-// export const prerender = true;
-
 import type { PageLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
+import { base } from '$app/paths';
 
 export const load = (async () => {
-    redirect(301, "/develop");
+    redirect(301, `${base}/develop`);
 }) satisfies PageLoad;

@@ -2,6 +2,7 @@
 	import '../app.pcss';
 	import './styles.css';
 	import {minute} from "$lib/util"
+	import { base } from '$app/paths';
 	import { page } from '$app/stores';  
 	import { beforeNavigate } from '$app/navigation';
 	import { started as timer_started } from '$lib/components/Timer.svelte';
@@ -88,11 +89,12 @@
 		</p>
 
 		<div>
-			<a href="/develop">develop</a>
-			<a href="/rinse">rinse</a>
-			<a href="/fix">fix</a>
-			<a href="/wash">wash</a>
-			<a href="/dry">dry</a>
+			<!-- I don't like how this looks, tbh. -->
+			<a href="{base}/develop">develop</a>
+			<a href="{base}/rinse">rinse</a>
+			<a href="{base}/fix">fix</a>
+			<a href="{base}/wash">wash</a>
+			<a href="{base}/dry">dry</a>
 		</div>
 
 		<slot />
