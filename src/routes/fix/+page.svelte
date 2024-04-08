@@ -2,6 +2,7 @@
     import type { PageData } from './$types';
     import Timer from '$lib/components/Timer.svelte';
 	import { minute, second } from '$lib/util';
+	import { Alert } from 'flowbite-svelte';
     
     // export let data: PageData;
 </script>
@@ -12,24 +13,29 @@
 </svelte:head>
 
 <section>
-    <div>
-        <Timer 
-            duration={minute(8)} 
-            sub_timer
-			sub_timer_duration={second(30)}
-            next_url="/wash"
-        >
-            <div slot="subtimer" let:timer_count>
+    <Timer 
+        duration={minute(8)} 
+        sub_timer
+        sub_timer_duration={second(30)}
+        next_url="/wash"
+    >
+        <div slot="subtimer" let:timer_count>
+            <div class="justify-center w-96 font-bold">
                 {#if timer_count % 2 == 0} 
-                    <p>agitate</p>
+                    <Alert color="red">
+                        Agitate your container until this 2nd timer ends.
+                    </Alert>
                 {:else}
-                    <p>leave</p>
+                    <Alert color="blue">
+                        Leave your container until this 2nd timer ends.
+                    </Alert>
                 {/if}
             </div>
-		</Timer>
-        
-        <div class="text-column">
-            asdf
+
         </div>
-    </div>
+    </Timer>
+
+	<div class="mt-12 italic">
+        Tip: Before washing, do not look at the fixed print before washing.
+	</div>
 </section>

@@ -1,28 +1,28 @@
 <script lang="ts">
 	import Timer from '$lib/components/Timer.svelte';
 	import { second } from '$lib/util';
-    import type { PageData } from './$types';
-    
-    // export let data: PageData;
+	import { Button } from 'flowbite-svelte';
+	import type { PageData } from './$types';
+	import { base } from '$app/paths';
+
+	// export let data: PageData;
 </script>
 
 <svelte:head>
 	<title>Film Process Timer | Rinse</title>
 </svelte:head>
 
-<section>
-    <div>
-        <Timer 
-            duration={second(60)} 
-            sub_timer
-			sub_timer_duration={second(10)}
-            next_url="/fix"
-        >
-		</Timer>
-        
-        <div class="text-column">
-            Note: this timer doesn't really matter, just fill up and dump your container
-            three times with water.
-        </div>
-    </div>
+<section class="flex flex-col place-items-center">
+	<div>
+		<Timer duration={second(60)} sub_timer sub_timer_duration={second(10)} next_url="/fix"></Timer>
+	</div>
+
+	<div class="mt-2">
+		<Button href="{base}/fix" color="blue">Skip</Button>
+	</div>
+
+	<div class="mt-12 italic">
+		Note: this timer doesn't really matter, just fill up and dump your container three times with
+		water.
+	</div>
 </section>

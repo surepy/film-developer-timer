@@ -8,15 +8,13 @@
 </script>
 
 <section>
-    <div>
-        <Timer 
-            duration={minute(25)} 
-            next_url={undefined}
-        >
-		</Timer>
-        
-        <div class="text-column">
-            Tip: take a coffee break! 
-        </div>
-    </div>
+    <Timer 
+    duration={minute(25)} 
+    next_url={undefined}
+    >
+    </Timer>
+
+	<div class="mt-12 italic">
+        Tip: take a coffee break! 
+	</div>
 </section>

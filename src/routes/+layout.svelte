@@ -70,7 +70,15 @@
 
 	$: development_time = minute(5);
 	$: estimated_end_time = calcEstTime(development_time, getStep($page.url.pathname));
-	
+
+	function getColor(pathname : string, step: DevelopmentSteps) {
+		if (getStep(pathname) == step) {
+			return "purple";
+		}
+		return "alternative";
+	}
+
+	import { ButtonGroup, Button } from 'flowbite-svelte';
 </script>
 
 <svelte:head>
@@ -84,17 +92,21 @@
 			Film Processing Timer
 		</h1>
 
-		<p>
-			Your Estimated Film Processing End Time: <b>{estimated_end_time.toLocaleTimeString()}</b>
-		</p>
+		<div class="flex flex-row place-items-center text-center">
+			<p>
+				Your Estimated Film Processing End Time: 
+				<b class="text-lg"><i>{estimated_end_time.toLocaleTimeString()}</i></b>
+			</p>
+		</div>
 
-		<div>
-			<!-- I don't like how this looks, tbh. -->
-			<a href="{base}/develop">develop</a>
-			<a href="{base}/rinse">rinse</a>
-			<a href="{base}/fix">fix</a>
-			<a href="{base}/wash">wash</a>
-			<a href="{base}/dry">dry</a>
+		<div class="mt-5 mb-8 justify-center">
+			<ButtonGroup>
+				<Button href="{base}/develop" color={getColor($page.url.pathname, DevelopmentSteps.Develop)} disabled={$timer_started} >Develop</Button>
+				<Button href="{base}/rinse" color={getColor($page.url.pathname, DevelopmentSteps.Rinse)} disabled={$timer_started }>Rinse</Button>
+				<Button href="{base}/fix" color={getColor($page.url.pathname, DevelopmentSteps.Fix)} disabled={$timer_started}>Fix</Button>
+				<Button href="{base}/wash" color={getColor($page.url.pathname, DevelopmentSteps.Wash)} disabled={$timer_started}>Wash</Button>
+				<Button href="{base}/dry" color={getColor($page.url.pathname, DevelopmentSteps.Dry)} disabled={$timer_started}>Dry</Button>
+			  </ButtonGroup>
 		</div>
 
 		<slot />
@@ -120,6 +132,7 @@
 		width: 100%;
 		max-width: 64rem;
 		margin: 0 auto;
+		align-items: center;
 		box-sizing: border-box;
 	}
 

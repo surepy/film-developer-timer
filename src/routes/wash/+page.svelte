@@ -12,11 +12,13 @@
 </svelte:head>
 
 <section>
-    <div>
-        <Timer 
-            duration={minute(20)} 
-            next_url="/dry"
-        >
-		</Timer>
-    </div>
+    <Timer 
+        duration={minute(20)} 
+        next_url="/dry"
+    >
+    </Timer>
+
+    <div class="mt-12 italic">
+        It's recommended you dip the film in photo-flow, before going into drying.
+	</div>
 </section>
