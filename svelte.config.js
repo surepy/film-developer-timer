@@ -15,7 +15,7 @@ const config = {
 		adapter: adapter(),
         paths: {
 			// TODO: probably a different way to handle this?
-            base: process.env.NODE_ENV === 'production' ? '/film-developer-timer' : '',
+            base: process.env.DEPLOY_TARGET === 'github' ? '/film-developer-timer' : '',
 		}
 	}
 };
