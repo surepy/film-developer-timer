@@ -108,7 +108,13 @@
 			</p>
 
 			<div slot="subtimer" let:timer_count let:sub_remaining_seconds>
-				{#if sub_remaining_seconds > 5}
+   <div class="w-80">
+   {#if remaining_time > 30}
+   {#if timer_count < 1}
+					<Alert color="red">
+					 Start agitating until this timer ends.
+				  	</Alert>
+				{:else if sub_remaining_seconds > 5}
 					<Alert color="blue">
 						Start agitating in <span class="font-medium">{Math.trunc(sub_remaining_seconds - 5)}s</span>...
 				  	</Alert>
@@ -117,6 +123,7 @@
 						Start agitating for <span class="font-medium">{Math.trunc(sub_remaining_seconds - 5)}s</span>!
 				  	</Alert>
 				{/if}
+    {/if}
 
 				{#if timer_count < 1}
 					<Alert color="yellow">
@@ -124,6 +131,7 @@
 				  	</Alert>
 				{/if}
 			</div>
+   </div>
 		</Timer>
 	</div>
 
