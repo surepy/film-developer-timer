@@ -29,6 +29,8 @@
 	let dev_minutes = 5;
 	let dev_seconds = 0;
 	$: development_time = minute(dev_minutes) + dev_seconds;
+
+ let remaining_time;
 </script>
 
 <svelte:head>
@@ -91,7 +93,7 @@
 			sub_timer
 			sub_timer_duration={second(30)}
 			next_url="/rinse"
-			let:remaining_time
+			bind:remaining_time
 		>
 			<p class="font-bold mb-2 w-80">
 				
