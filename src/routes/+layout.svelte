@@ -17,7 +17,7 @@
 	};
 
 	function getStep(step : string) {
-		let idx = step.indexOf('/', 1);
+		let idx = step.lastIndexOf('/');
 		if (idx == -1) {
 			idx = step.length;
 		}
