@@ -21,7 +21,7 @@
 		if (idx == -1) {
 			idx = step.length;
 		}
-		switch (step.substring(1, idx)) {
+		switch (step.substring(idx + 1)) {
 		case "rinse":
 			return DevelopmentSteps.Rinse;
 		case "fix":
