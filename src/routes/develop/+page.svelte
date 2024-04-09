@@ -30,7 +30,6 @@
 	let dev_seconds = 0;
 	$: development_time = minute(dev_minutes) + dev_seconds;
 
- let remaining_time;
 </script>
 
 <svelte:head>
@@ -93,10 +92,9 @@
 			sub_timer
 			sub_timer_duration={second(30)}
 			next_url="/rinse"
-			bind:remaining_time
+			let:remaining_time
 		>
 			<p class="font-bold mb-2 w-80">
-				
 				{#if remaining_time < 10}
 					<Alert color="red">
 						START POURING NOW
@@ -111,7 +109,6 @@
 
 			<div slot="subtimer" let:timer_count let:sub_remaining_seconds>
    <div class="w-80">
-   {#if remaining_time > 30}
    {#if timer_count < 1}
 					<Alert color="red">
 					 Start agitating until this timer ends.
@@ -125,7 +122,6 @@
 						Start agitating for <span class="font-medium">{Math.trunc(sub_remaining_seconds - 5)}s</span>!
 				  	</Alert>
 				{/if}
-    {/if}
 
 				{#if timer_count < 1}
 					<Alert color="yellow">
