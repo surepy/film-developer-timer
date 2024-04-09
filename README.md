@@ -1,8 +1,10 @@
-# Basic Film Development Timer
+# Basic Film Processing Timer
 
-A basic film development timer, created so I don't have to circulate between multiple timers on my phone.
+A basic film processing timer, created so I don't have to circulate between multiple timers on my phone and my head.
 
-Currently supported: kentmere 100 + kodak hc110
+Mainly Targetting: [kentmere 100](https://www.ilfordphoto.com/kentmere-100-120) + [kodak hc110](https://www.bhphotovideo.com/c/product/1493206-REG/kodak_1058692_professional_hc_110_1l_developer.html) (It's what I have)
+
+Yes, I reused the example app a lot.
 
 ## Creating a project
 

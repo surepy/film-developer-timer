@@ -86,7 +86,6 @@
 </svelte:head>
 
 <div class="app">
-
 	<main>
 		<h1>
 			Film Processing Timer
@@ -113,7 +112,7 @@
 	</main>
 
 	<footer>
-		<p>made with <a href="https://kit.svelte.dev">SvelteKit</a></p>
+		<p>Made with <a href="https://kit.svelte.dev">Sveltekit</a> | <a href="https://github.com/surepy/film-developer-timer">Source Code</a></p>
 	</footer>
 </div>
 
