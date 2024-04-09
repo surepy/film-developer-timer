@@ -32,7 +32,7 @@
 </script>
 
 <svelte:head>
-	<title>Film Process Timer | Develop</title>
+	<title>Film Processing Timer | Develop</title>
 </svelte:head>
 
 <section class="flex flex-col place-items-center">

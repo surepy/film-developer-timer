@@ -7,9 +7,8 @@
     // export let data: PageData;
 </script>
 
-
 <svelte:head>
-	<title>Film Process Timer | Fix</title>
+	<title>Film Processing Timer | Fix</title>
 </svelte:head>
 
 <section>

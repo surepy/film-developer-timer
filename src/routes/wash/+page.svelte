@@ -8,7 +8,7 @@
 
 
 <svelte:head>
-	<title>Film Process Timer | Wash</title>
+	<title>Film Processing Timer | Wash</title>
 </svelte:head>
 
 <section>

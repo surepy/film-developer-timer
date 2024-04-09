@@ -6,4 +6,8 @@
 	goto("/develop");
 </script>
 
+<svelte:head>
+	<title>Film Processing Timer</title>
+</svelte:head>
+
 <p>redirecting to /develop...</p>

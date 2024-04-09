@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-	<title>Film Process Timer | Rinse</title>
+	<title>Film Processing Timer | Rinse</title>
 </svelte:head>
 
 <section class="flex flex-col place-items-center">
