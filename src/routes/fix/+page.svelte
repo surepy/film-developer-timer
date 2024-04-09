@@ -36,6 +36,6 @@
     </Timer>
 
 	<div class="mt-12 italic">
-        Tip: Before washing, do not look at the fixed print before washing.
+        Tip: Before washing, do not look at the fixed print just immediately go to washing.
 	</div>
 </section>

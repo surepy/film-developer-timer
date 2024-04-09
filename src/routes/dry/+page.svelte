@@ -15,6 +15,9 @@
     </Timer>
 
 	<div class="mt-12 italic">
+        Drying is anywhere between 20 ~ 30 minutes, here it's set to 25 minutes as a "safe" number.
+        <br>
+        <br>
         Tip: take a coffee break! 
 	</div>
 </section>

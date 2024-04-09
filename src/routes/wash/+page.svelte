@@ -18,7 +18,10 @@
     >
     </Timer>
 
-    <div class="mt-12 italic">
-        It's recommended you dip the film in photo-flow, before going into drying.
+    <div class="mt-12 italic place-items-center">
+        Tip: It's recommended you dip the film in photo-flo, before going into drying.
+        <br> 
+        <br> 
+        It also may be better to use the built in alarm feature on your device from here.
 	</div>
 </section>

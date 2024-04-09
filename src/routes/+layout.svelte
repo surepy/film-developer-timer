@@ -93,9 +93,9 @@
 		</h1>
 
 		<div class="flex flex-row place-items-center text-center">
-			<p>
+			<p class="font-normal">
 				Your Estimated Film Processing End Time: 
-				<b class="text-lg"><i>{estimated_end_time.toLocaleTimeString()}</i></b>
+				<b class="text-lg">{estimated_end_time.toLocaleTimeString()}</b>
 			</p>
 		</div>
 

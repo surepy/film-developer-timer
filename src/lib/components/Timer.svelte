@@ -207,6 +207,7 @@
 
 		<slot
 			name="subtimer"
+			{remaining_time}
 			timer_count={Math.trunc(elapsed_time / sub_timer_duration)}
 			sub_elapsed_time={sub_timer_duration - sub_remaining_time}
 			sub_remaining_seconds={sub_remaining_time % 60}

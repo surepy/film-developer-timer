@@ -4,7 +4,7 @@
 	// export let data: PageData;
 
 	import { minute, second, integer } from '$lib/util';
-	import Timer from '$lib/components/Timer.svelte';
+	import Timer, { started as timer_started } from '$lib/components/Timer.svelte';
 
 	import { Checkbox, NumberInput, Label, Alert } from 'flowbite-svelte';
 
@@ -29,7 +29,6 @@
 	let dev_minutes = 5;
 	let dev_seconds = 0;
 	$: development_time = minute(dev_minutes) + dev_seconds;
-
 </script>
 
 <svelte:head>
@@ -51,6 +50,7 @@
 					type="number"
 					inputmode="numeric"
 					pattern="[0-9]*"
+					disabled={$timer_started}
 					bind:value={dev_minutes}
 				/>
 				Seconds:
@@ -61,6 +61,7 @@
 					type="number"
 					inputmode="numeric"
 					pattern="[0-9]*"
+					disabled={$timer_started}
 					bind:value={dev_seconds}
 				/>
 			</div>
@@ -76,6 +77,7 @@
 					placeholder="developer tempreture"
 					type="number"
 					value="68"
+					disabled={$timer_started}
 					on:input={(event) => {
 						dev_seconds = 0;
 						dev_minutes = kentmere_100_kodak_hc110_dev_time(event.target?.value);
@@ -94,42 +96,42 @@
 			next_url="/rinse"
 			let:remaining_time
 		>
-			<p class="font-bold mb-2 w-80">
+			<p class="mb-2 w-80 font-bold">
 				{#if remaining_time < 10}
-					<Alert color="red">
-						START POURING NOW
-					</Alert>
+					<Alert color="red"><p class="font-bold">START POURING NOW</p></Alert>
 				{:else if remaining_time < 30}
-				<Alert color="orange">
-					Start pouring in {integer(remaining_time - 10)} seconds to prevent overdevelopent!
-				</Alert>
+					<Alert color="orange">
+						Start pouring in {integer(remaining_time - 10)} seconds to prevent overdevelopent!
+					</Alert>
 				{/if}
-				
 			</p>
 
-			<div slot="subtimer" let:timer_count let:sub_remaining_seconds>
-   <div class="w-80">
-   {#if timer_count < 1}
-					<Alert color="red">
-					 Start agitating until this timer ends.
-				  	</Alert>
-				{:else if sub_remaining_seconds > 5}
-					<Alert color="blue">
-						Start agitating in <span class="font-medium">{Math.trunc(sub_remaining_seconds - 5)}s</span>...
-				  	</Alert>
-				{:else}
-					<Alert color="red">
-						Start agitating for <span class="font-medium">{Math.trunc(sub_remaining_seconds - 5)}s</span>!
-				  	</Alert>
-				{/if}
+			<div slot="subtimer" let:timer_count let:sub_remaining_seconds let:remaining_time>
+				<div class="w-80">
+					<!-- don't show this if last 30 seconds -->
+					{#if remaining_time > 30}
+						{#if timer_count < 1}
+							<Alert color="red">Start agitating until this timer ends.</Alert>
+						{:else if sub_remaining_seconds > 5}
+							<Alert color="blue">
+								Start agitating in <span class="font-semibold"
+									>{Math.trunc(sub_remaining_seconds - 5)}</span
+								>s...
+							</Alert>
+						{:else}
+							<Alert color="red">
+								Start agitating for <span class="font-semibold"
+									>{Math.trunc(sub_remaining_seconds + 1)}</span
+								>s!
+							</Alert>
+						{/if}
+					{/if}
 
-				{#if timer_count < 1}
-					<Alert color="yellow">
-						Tap the bottom of the sink after this 30 seconds!
-				  	</Alert>
-				{/if}
+					{#if timer_count < 1}
+						<Alert color="yellow">Tap the bottom of the sink after this <span class="font-semibold">30</span> seconds!</Alert>
+					{/if}
+				</div>
 			</div>
-   </div>
 		</Timer>
 	</div>
 

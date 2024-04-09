@@ -23,6 +23,6 @@
 
 	<div class="mt-12 italic">
 		Note: this timer doesn't really matter, just fill up and dump your container three times with
-		water.
+		water, then press Skip.
 	</div>
 </section>

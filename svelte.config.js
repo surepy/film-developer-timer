@@ -1,5 +1,6 @@
-// import adapter from '@sveltejs/adapter-auto';
-import adapter from '@sveltejs/adapter-static';
+import adapter from '@sveltejs/adapter-cloudflare';
+//import adapter from '@sveltejs/adapter-auto';
+//import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -15,7 +16,7 @@ const config = {
 		adapter: adapter(),
         paths: {
 			// TODO: probably a different way to handle this?
-            base: process.env.DEPLOY_TARGET === 'github' ? '/film-developer-timer' : '',
+            // base: process.env.DEPLOY_TARGET === 'github' ? '/film-developer-timer' : '',
 		}
 	}
 };
