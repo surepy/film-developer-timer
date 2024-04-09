@@ -112,7 +112,7 @@
 	</main>
 
 	<footer>
-		<p>Made with <a href="https://kit.svelte.dev">Sveltekit</a> | <a href="https://github.com/surepy/film-developer-timer">Source Code</a></p>
+		<p>Made with <a href="https://kit.svelte.dev">Sveltekit</a> | <a href="https://github.com/surepy/film-processing-timer">Source Code</a></p>
 	</footer>
 </div>
 
